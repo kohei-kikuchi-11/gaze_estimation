@@ -1,1 +1,2 @@
-# gaze_estimation手順
+# gaze_estimationの動作順番
+
