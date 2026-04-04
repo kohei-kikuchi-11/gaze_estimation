@@ -1,4 +1,4 @@
-1.
+1.モデルのダウンロード
 
 ```
 pip install openvino
