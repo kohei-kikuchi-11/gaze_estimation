@@ -1,4 +1,4 @@
-#!/home/kk06/workspace/openvino/.venv_openvino/bin/python3
+#!/home/kk06/workspace/gaze_estimation/.venv_openvino/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

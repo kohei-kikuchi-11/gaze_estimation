@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/kk06/workspace/openvino/.venv_openvino
+set -gx VIRTUAL_ENV /home/kk06/workspace/gaze_estimation/.venv_openvino
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
