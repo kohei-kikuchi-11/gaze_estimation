@@ -1,0 +1,5 @@
+# bash
+omz_downloader --name face-detection-adas-0001,\
+facial-landmarks-35-adas-0002,\
+head-pose-estimation-adas-0001,\
+gaze-estimation-adas-0002 \

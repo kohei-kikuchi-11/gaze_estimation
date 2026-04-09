@@ -1,0 +1,8 @@
+services:
+    gaze_estimation:
+        build: .
+        container_name: gaze_estimation
+        volumes:
+            - ./input:/gaze_estimation/input
+            - ./intel:/gaze_estimation/intel
+            - ./output:/gaze_estimation/output
