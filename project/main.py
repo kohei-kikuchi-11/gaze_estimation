@@ -56,6 +56,8 @@ def main():
         if not cap.isOpened():
             print("動画を開けません:",args.input)
             return
+        else:
+            print("動画読み込み成功")
 
         # 動画情報取得
         fps = cap.get(cv2.CAP_PROP_FPS)
@@ -65,6 +67,13 @@ def main():
         # 保存設定
         fourcc = cv2.VideoWriter_fourcc(*"mp4v")
         out = cv2.VideoWriter(str(temp_output), fourcc, fps, (width, height))
+
+        if not out.isOpened():
+            print("VideoWriter作成失敗:", temp_output)
+            return
+        else:
+            print("VideoWriter作成成功:", temp_output)
+
         # 色の設定(GBR)
         green, blue, yellow, red = (0, 255, 0), (255, 0, 0), (0, 255, 255), (0, 0, 255)
         #  モデルパスを設定
@@ -75,8 +84,10 @@ def main():
         "gaze": "./intel/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml"
         })
 
+
         while True:
-            ret,frame = cap.read()
+                    
+            ret, frame = cap.read()
             if not ret:
                 break
         
