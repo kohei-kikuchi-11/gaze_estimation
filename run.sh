@@ -1,2 +1,5 @@
 # bash
-python main.py --input input/176584_1280x720.mp4
+python main.py --input input/36510_1280x720.mp4
+#176584_1280x720.mp4
+#14413_1280x720.mp4
+#36510_1280x720.mp4

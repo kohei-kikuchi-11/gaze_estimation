@@ -14,9 +14,18 @@ class GazePipeline:
 
     def get_square_roi(face_img, cx, cy, size=20):
         h, w = face_img.shape[:2]
-        half size // 2
+        half =  size // 2
 
-        
+        start_x = max(0, min(cx - half, w -size))
+        start_y = max(0, min(cy -half, h -size))
+        # 開始位置から確実に固定サイズを確保する
+        end_x = start_x + size
+        end_y = start_y + size
+
+        roi_img = face_img[start_x:end_y, start_x, end_x]
+
+        return roi_img, (start_x, start_y,end_x, end_y)
+
     
     def process_frame(self, frame):
         # Face Detection
@@ -34,7 +43,7 @@ class GazePipeline:
             lm_input = self.landmark.preprocess(face_img)
             lm_out = self.landmark.infer(lm_input)
             landmarks = self.landmark.postprocess(lm_out, face_img)
-            # 目の中心座標を計算
+            # 目の中心座標を計算 左目p0,p1 右目p2,p3
             lx, ly = (landmarks[0][0] + landmarks[1][0]) // 2, (landmarks[0][1] + landmarks[1][1]) // 2
             rx, ry = (landmarks[2][0] + landmarks[3][0]) // 2, (landmarks[2][1] + landmarks[3][1]) // 2
 
@@ -52,7 +61,7 @@ class GazePipeline:
             gaze_input = self.gaze.preprocess(left_eye, right_eye, head_pose)
             gaze_out = self.gaze.infer(gaze_input)
             gaze_vec = self.gaze.postprocess(gaze_out)
-            gaze_vec.flatten()
+            gaze_vec = gaze_vec.flatten()
 
             results.append({
                 "face": (xmin, ymin, xmax, ymax),

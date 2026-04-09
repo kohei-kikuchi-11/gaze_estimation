@@ -111,4 +111,53 @@ if not isinstance(gaze_out, dict):
 # key: <ConstOutput: names[gaze_vector] shape[1,3] type: f32>, shape: (1, 3), dtype: float32
 
 
+## 0. はじめに
+2025年10月入社の菊池紘平と申します。アサイン中に業務で使用したOpenVINOを使った視線推定について備忘録を兼ねて再現をしてみたいと思います。
+
+## 1. OpenVINOとは
+OpenVINOとは、Intelが開発したAIモデルを“速く・軽く動かすための推論最適化ツールで、正式名称をOpen Visual Inference & Neural Network Optimizationといいます。
+### できること
+モデルの変換
+PyTorch / TensorFlow → OpenVINO形式（IR形式）に変換　
+推論の高速化
+	•	CPU / GPU / VPUで最適に実行
+	•	特にCPUがめちゃ速くなる（Intel製だとさらに強い）
+③ 軽量化
+	•	モデルサイズ削減
+	•	推論時間短縮
+
+使用例:
+	•	カメラ映像をリアルタイム処理したい
+	•	GPUなし環境で動かしたい
+	•	エッジデバイス（PC・組み込み）で動かしたい
+
+PyTorchでモデルを作ってOpenVINOで変換して軽量化、最速化して実行する
+
+## 2. 視線推定の流れ
+```参考ページ
+[視線推定デモ]https://www.isus.jp/wp-content/uploads/openvino/2024/docs/omz_demos_gaze_estimation_demo_cpp.html
+```
+
+1. 与えられた動画または画像から顔を検出し、顔ROI(Region of Interest)を切り出す
+ROI(Region of Interest)とは?
+画像または動画の中で特に注目して、処理や分析を行いたい部分のこと。
+
+2. 顔ROIからランドマーク(目、鼻、口、眉毛、輪郭)推定する
+
+3. 頭部姿勢推定をする
+
+4. 目の座標と頭部姿勢から視線推定を行う。
+
+## 3. 実行例
+使用モデル:
+
+
+
+
+
+
+
+
+
+
 

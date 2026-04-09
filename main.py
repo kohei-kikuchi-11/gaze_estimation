@@ -64,7 +64,7 @@ def main():
     out = cv2.VideoWriter(str(temp_output), fourcc, fps, (width, height))
     # 色の設定
     green, blue, yellow, red = (0, 255, 0), (255, 0, 0), (0, 255, 255), (0, 0, 255)
-
+    #  モデルパスを
     pipeline = GazePipeline({
     "face": "./intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml",
     "landmark": "./intel/facial-landmarks-35-adas-0002/FP16/facial-landmarks-35-adas-0002.xml",

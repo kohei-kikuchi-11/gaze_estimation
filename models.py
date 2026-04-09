@@ -6,7 +6,7 @@ import cv2
 
 def to_nchw(image):
     """
-    入力画像(h,w,c)→(n,c,h,c)に変換する
+    入力画像(h,w,c)→(n,c,h,w)に変換する
     nはバッチ数(基本1)
     """
     image = np.transpose(image, (2, 0, 1))[np.newaxis, :]
@@ -87,7 +87,6 @@ class LandmarkDetector(BaseModel):
         landmarks = outputs["align_fc3"] # OVDictから取り出す
         landmarks = landmarks.reshape(-1, 2) # (1,70)→(35,2)
         
-
         coords = []
         for (x, y) in landmarks:
             coords.append((int(x * w), int(y * h)))
