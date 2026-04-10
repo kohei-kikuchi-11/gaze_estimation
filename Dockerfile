@@ -21,7 +21,8 @@ COPY . .
 
 # モデルのダウンロード
 RUN bash model_downloader.sh
+
 USER gazeuser
 
-# 視線推定の実行
+# 視線推定の実行(固定項目)
 ENTRYPOINT ["python3", "./project/main.py"]
