@@ -95,7 +95,7 @@ def main():
                 break
             
             frame_count += 1
-            if frame_count % 30 ==0:
+            if frame_count % 30 == 0:
                 print(f"processing frame: {frame_count}")
 
             results = pipeline.process_frame(frame)
@@ -136,15 +136,9 @@ def main():
                     cv2.arrowedLine(frame,(cx, cy),(end_x, end_y),blue,2)
             out.write(frame)
 
-            if frame_count % 30 == 0:
-                print("write成功")
-
     finally:
-        if cap is not None:
-            cap.release()
-        if out is not None:
-            out.release()
-        cv2.destroyAllWindows()
+        cap.release()
+        out.release()
     
     temp_output_path = Path(temp_output)
     if temp_output_path.exists():

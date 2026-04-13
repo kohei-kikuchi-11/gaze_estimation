@@ -16,8 +16,11 @@ class GazePipeline:
 
     def get_square_roi(self, face_img, cx, cy,landmarks):
         '''
-
+        face_img 顔の切り出し画像(ROI)
+        cx,cy ROIの中心座標
+        landmarks 顔の特徴点
         '''
+
         left_w = np.linalg.norm(np.array(landmarks[0]) - np.array(landmarks[1]))
         right_w = np.linalg.norm(np.array(landmarks[2]) - np.array(landmarks[3]))
         size = int(max(left_w, right_w) * 1.5)
