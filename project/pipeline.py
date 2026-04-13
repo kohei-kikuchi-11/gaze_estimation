@@ -1,6 +1,5 @@
 # pipeline.py
-# パイプライン本体
-# 出力を受け取って加工をする
+# 1フレームの画像から顔→目→頭部姿勢→視線を推定する処理をまとめる
 import numpy as np
 from models import FaceDetector, LandmarkDetector, HeadPoseEstimator, GazeEstimation
 
