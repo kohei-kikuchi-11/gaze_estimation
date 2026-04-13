@@ -3,7 +3,6 @@ charset-normalizer==3.4.7
 defusedxml==0.7.1
 idna==3.11
 networkx==3.1
-numpy==1.26.4
 opencv-python==4.8.1.78
 openvino==2024.6.0
 openvino-dev==2024.6.0
@@ -12,3 +11,4 @@ packaging==26.0
 PyYAML==6.0.3
 requests==2.33.1
 urllib3==2.6.3
+numpy==1.26.4

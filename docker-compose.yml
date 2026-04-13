@@ -1,8 +1,6 @@
 services:
     gaze_estimation:
         build: .
-        user: "${UID}:${GID}"
         container_name: gaze_estimation
         volumes:
             - ./input:/gaze_estimation/input
-            - ./output:/gaze_estimation/output

@@ -63,10 +63,11 @@ def main():
         fps = cap.get(cv2.CAP_PROP_FPS)
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        print(f"fps={fps}, size=({width},{height})")
 
         # 保存設定
         fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-        out = cv2.VideoWriter(str(temp_output), fourcc, fps, (width, height))
+        out = cv2.VideoWriter(str(temp_output), cv2.CAP_FFMPEG, fourcc, fps, (width, height))
 
         if not out.isOpened():
             print("VideoWriter作成失敗:", temp_output)
@@ -84,13 +85,18 @@ def main():
         "gaze": "./intel/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml"
         })
 
-
+        frame_count = 0
         while True:
                     
             ret, frame = cap.read()
             if not ret:
+                print("frame読み取り完了")
                 break
-        
+            
+            frame_count += 1
+            if frame_count % 30 ==0:
+                print(f"processing frame: {frame_count}")
+
             results = pipeline.process_frame(frame)
 
             for r in results:
@@ -128,6 +134,9 @@ def main():
                     end_y = int(cy + gaze_vec[1] * 100)
                     cv2.arrowedLine(frame,(cx, cy),(end_x, end_y),blue,2)
             out.write(frame)
+
+            if frame_count % 30 == 0:
+                print("write成功")
 
             if cv2.waitKey(1) == 27:
                 break
