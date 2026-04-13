@@ -78,7 +78,7 @@ Dockerを使って簡単に動かせるようにしました。
 git clone https://github.com/kohei-kikuchi-11/gaze_estimation.git
 ```
 #### step2
-視線推定を行いたい動画をinputディレクトリに人の顔が写っている動画を格納します。
+視線推定を行いたい動画をinputディレクトリに格納します。
 
 ### 3.2 実行
 下記コマンドを実行する。自前の動画を使用する場合はrun.shのinputパスを書き換えて実行する。
