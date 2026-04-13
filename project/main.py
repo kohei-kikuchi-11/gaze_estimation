@@ -1,5 +1,5 @@
 # main.py
-# 視線推定を実行する
+# 動画を読み込んで視線推定を行い、結果を描画した動画として出力する
 import argparse
 import cv2
 import subprocess
