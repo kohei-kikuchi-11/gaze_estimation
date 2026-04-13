@@ -1,5 +1,6 @@
 # pipeline.py
 # パイプライン本体
+# 出力を受け取って加工をする
 import numpy as np
 from models import FaceDetector, LandmarkDetector, HeadPoseEstimator, GazeEstimation
 

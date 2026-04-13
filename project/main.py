@@ -1,3 +1,4 @@
+# 視線推定を実行する
 import argparse
 import cv2
 import subprocess
@@ -138,8 +139,6 @@ def main():
             if frame_count % 30 == 0:
                 print("write成功")
 
-            if cv2.waitKey(1) == 27:
-                break
     finally:
         if cap is not None:
             cap.release()
